@@ -1,0 +1,53 @@
+{% extends 'app/base.html' %} {% load static %} {% block title %}Customer Registration{% endblock title %} {% block main-content %}
+<div class="loginbox">
+    <div class="box">
+        <form autocomplete="off" action="" style="position: absolute;
+		inset: 2px;
+		background: #28292d;
+		padding: 50px 40px;
+		border-radius: 8px;
+		z-index: 2;
+		display: flex;
+		flex-direction: column;" method="post">
+            {% csrf_token %}
+            <h2>Sign in</h2>
+            <div class="inputBox">
+                <input type="email" required="required" name="email">
+                <span>   Email-ID</span>
+                <i></i>
+            </div>
+            <div class="inputBox">
+                <input type="text" required="required" name="Phnum">
+                <span>   Phone Number</span>
+                <i></i>
+            </div>
+            <div class="inputBox">
+                <input type="text" required="required" name="uname">
+                <span>Username</span>
+                <i></i>
+            </div>
+            <div class="inputBox">
+                <input type="text" required="required" name="fname">
+                <span>firstname</span>
+                <i></i>
+            </div>
+            <div class="inputBox">
+                <input type="text" required="required" name="lname">
+                <span>lastname</span>
+                <i></i>
+            </div>
+            <div class="inputBox">
+                <input type="password" required="required" name="pass1">
+                <span>Password</span>
+                <i></i>
+            </div>
+            <div class="inputBox">
+                <input type="password" required="required" name="pass2">
+                <span>Confirm-Password</span>
+                <i></i>
+            </div>
+            <input type="submit" value="Sign in">
+        </form>
+    </div>
+</div>
+{% endblock main-content %}

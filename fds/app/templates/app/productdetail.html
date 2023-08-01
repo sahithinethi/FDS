@@ -1,0 +1,47 @@
+{% extends 'app/base.html' %} {% load static %} {% block title %}Product Detail{% endblock title %} {% block main-content %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-sm-6 text-center align-self-center">
+            <img src="{{product.product_image.url}}" alt="" height="800" width="600" class="img-fluid img-thumbnail">
+        </div>
+        <div class="col-sm-5 offset-sm-1" style="background-color:rgb(39, 52, 9);border-radius: 20px;">
+            <h2 style="color:rgb(159, 198, 76)">Product Title: {{product.title}}</h2>
+            <hr>
+            <p style="color:rgb(159, 198, 76)">{{product.description}}</p> <br>
+            <p style="color:rgb(159, 198, 76)">Color : {{product.color}}</p> <br>
+            <p style="color:rgb(159, 198, 76)">fabric :{{product.fabric}}</p> <br>
+            <p style="color:rgb(159, 198, 76)">sizes :{{product.sizes}}</p> <br>
+
+            <h4 style="color:rgb(159, 198, 76)">Rs.{{product.discounted_price}}<small class="fw-light text-decoration-line-through">{{product.selling_price}}</small></h4> <br> {%if item_already_in_cart%}
+
+            <a style="color:rgb(159, 198, 76)" href="{% url 'show_cart' %}" class="btn btn-warning shadow px-5 py-2 ms-4"> Go To Cart </a> {%else%}
+
+            <form action="/add-to-cart" class="d-inline">
+                <div class="form-floating">
+                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                    <label for="floatingTextarea2">Need to Improve ? ? What you are expecting from us ??</label>
+                </div>
+                <br>
+                <input type="hidden" name="prod_id" value={{ product.id }} id="prod_id">
+
+                <button type="submit" class="btn btn-primary shadow px-5 py-2" style="color:rgb(159, 198, 76)">Add to Cart</button>
+            </form>
+
+            {%endif%}
+
+
+
+            <a href="{% url 'checkout' %}" class="btn btn-danger shadow px-5 py-2 ms-4" style="color:rgb(159, 198, 76)">Buy Now</a>
+            <h5 class="mt-5" style="color:rgb(0, 0, 0)">Available Offers</h5>
+            <ul>
+                <li style="color:rgb(159, 198, 76)">Bank Offer 5% Unlimited Cashback on Flipkart Axis Bank Credit</li>
+                <li style="color:rgb(159, 198, 76)">Special Price Get extra ₹3000 off (price inclusive of discount)</li>
+                <li style="color:rgb(159, 198, 76)">No cost EMI ₹1,667/month. Standard EMI also available</li>
+                <li style="color:rgb(159, 198, 76)">Partner Offer ₹2000 Flipkart Gift Card on Every 1000th Transaction with a new Visa Debit/Credit Card</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+{%endblock main-content%}

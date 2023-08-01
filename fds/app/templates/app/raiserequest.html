@@ -1,0 +1,12 @@
+{% extends 'app/base.html' %} {% load static %} {% block title %}Raise a Request{% endblock title %} {% block main-content %}
+<form action="/cart" method="post">
+    {% csrf_token %}
+    <div class="form-floating">
+        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 500px" style="background-color:rgb(159, 198, 76)"></textarea>
+        <label for="floatingTextarea2">Mention your required design for desiging</label>
+    </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+{% endblock main-content %}

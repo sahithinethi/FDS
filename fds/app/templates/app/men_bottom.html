@@ -1,0 +1,37 @@
+{% extends 'app/base.html' %} {% load static %} {% block title %}Buy Now{% endblock title %} {% block main-content %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="list-group">
+                <!-- <a href="/product-detail/{{product.id}}" class="btn btn-primary">Go somewhere</a> -->
+                <h4 style="color:rgb(159, 198, 76)">Filters</h4>
+                <a style="color:rgb(159, 198, 76)" href="{% url 'men_bottom' %}" class="list-group-item list-group-item-action" aria-current="true">All BRANDS</a>
+
+                <a style="color:rgb(159, 198, 76)" href="{% url 'men_bottom' 'Flying Machine' %}" class="list-group-item list-group-item-action" aria-current="true">Flying Machine</a>
+                <a style="color:rgb(159, 198, 76)" href="{% url 'men_bottom' 'Allen Solly' %}" class="list-group-item list-group-item-action" aria-current="true">Allen Solly</a>
+                <a style="color:rgb(159, 198, 76)" href="{% url 'men_bottom' 'H&M' %}" class="list-group-item list-group-item-action " aria-current="true">H&M</a>
+                <a style="color:rgb(159, 198, 76)" href="{% url 'men_bottom' 'pepe jeans' %}" class="list-group-item list-group-item-action " aria-current="true">pepe jeans</a>
+                <a style="color:rgb(159, 198, 76)" href="{% url 'men_bottom' 'Levis' %}" class="list-group-item list-group-item-action " aria-current="true">Levis</a>
+                <a style="color:rgb(159, 198, 76)" href="{% url 'men_bottom' 'Blackberrys' %}" class="list-group-item list-group-item-action " aria-current="true">Blackberrys</a>
+            </div>
+        </div>
+        <div class="col-sm-8 offset-sm-1">
+            <div class="row">
+                {% for product in mb %}
+                <div class="col-md-4">
+                    <img src="{{product.product_image.url}}" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title" style="color:rgb(159, 198, 76)">{{product.title}}</h5>
+                        <p class="card-text" style="color:rgb(159, 198, 76)">{{product.description}}<br>{{product.discounted_price}}</p>
+                        <p class="card-text" style="color:rgb(159, 198, 76)"><small class="text-muted" style="color:rgb(159, 198, 76)">Last updated 3 mins ago</small></p>
+                        <a href="{% url 'product-detail' product.id %}" class="btn btn-primary" style="color:rgb(159, 198, 76)">Buy now</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock main-content %}

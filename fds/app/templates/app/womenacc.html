@@ -1,0 +1,36 @@
+{% extends 'app/base.html' %} {% load static %} {% block title %}Buy Now{% endblock title %} {% block main-content %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="list-group">
+                <h4 style="color:rgb(159, 198, 76)">Filters</h4>
+                <a style="color:rgb(159, 198, 76)" href="{% url 'women_acc' %}" class="list-group-item list-group-item-action" aria-current="true">All Models</a>
+
+                <!-- <a style="color:rgb(159, 198, 76)" href="{% url 'women_indian' 'Saree' %}" class="list-group-item list-group-item-action" aria-current="true">Saree</a> -->
+                <!-- <a href="{% url 'men_top' 'Allen Solly' %}" class="list-group-item list-group-item-action" aria-current="true">Allen Solly</a> -->
+                <!-- <a href="{% url 'men_top' 'H&M' %}" class="list-group-item list-group-item-action " aria-current="true">H&M</a> -->
+                <!-- <a href="{% url 'men_top' 'pepe jeans' %}" class="list-group-item list-group-item-action " aria-current="true">pepe jeans</a> -->
+                <!-- <a href="{% url 'men_top' 'Levis' %}" class="list-group-item list-group-item-action " aria-current="true">Levis</a> -->
+                <!-- <a style="color:rgb(159, 198, 76)" href="{% url 'women_indian' 'Kurta' %}" class="list-group-item list-group-item-action " aria-current="true">Kurtas</a> -->
+            </div>
+        </div>
+        <div class="col-sm-8 offset-sm-1">
+            <div class="row">
+                {% for product in wa %}
+                <div class="col-md-4">
+                    <img src="{{product.product_image.url}}" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title" style="color:rgb(159, 198, 76)">{{product.title}}</h5>
+                        <p class="card-text" style="color:rgb(159, 198, 76)">{{product.description}}<br>{{product.discounted_price}}</p>
+                        <p class="card-text" style="color:rgb(159, 198, 76)"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        <a href="{% url 'product-detail' product.id %}" class="btn btn-primary">Buy</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock main-content %}

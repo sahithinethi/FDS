@@ -1,0 +1,40 @@
+{% extends 'app/base.html' %} {% load static %} {% block title %}Login{% endblock title %} {% block main-content %}
+ {% if messages %} {%for message in messages %}
+            <p {% if message.tags %} class="alert alert-{{message.tags}} mb-5" {% endif %}>{{message}}</p>
+            {% endfor %} {% endif %}
+
+<div class="loginbox">
+	<div class="box">
+		<form autocomplete="off" action="" style="position: absolute;
+		inset: 2px;
+		background: #28292d;
+		padding: 50px 40px;
+		border-radius: 8px;
+		z-index: 2;
+		display: flex;
+		flex-direction: column;" method="post">
+			{% csrf_token %}
+			<h2 style="color: rgb(159, 174, 22);
+	font-weight: 500;
+	text-align: center;
+	letter-spacing: 0.1em;">Login</h2>
+			<div class="inputBox">
+				<input type="text"  required="required" name="uname">
+				<span>User id</span>
+				<i></i>
+			</div>
+			<div class="inputBox">
+				<input type="password" required="required" name="password">
+				<span>   Password</span>
+				<i></i>
+			</div>
+			<div class="links">
+				<a href="#">Forgot Password ?</a>
+				<a href="#">Signup</a>
+			</div>
+			<input type="submit" value="Login">
+		</form>
+	</div>
+</div>
+
+{% endblock main-content %}
